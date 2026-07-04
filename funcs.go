@@ -24,3 +24,10 @@ func FlatMap[T, U any](v Value[T], fn func(T) Value[U]) Value[U] {
 func Equal[T comparable](a, b Value[T]) bool {
 	return a.Valid == b.Valid && (!a.Valid || a.V == b.V)
 }
+
+// OrNull creates a valid Value if v is non-zero, null otherwise.
+// Use From(v) when the zero value is meaningful, OrNull(v) when it means "not set".
+func OrNull[T comparable](v T) Value[T] {
+	var zero T
+	return New(v, v != zero)
+}

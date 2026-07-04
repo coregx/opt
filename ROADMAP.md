@@ -4,12 +4,13 @@
 
 ---
 
-## Current State: v0.1.0
+## Current State: v0.2.0
 
 ### Core
 - **`Value[T]`** — generic foundation on `sql.Null[T]` with JSON/SQL/Text support
 - **9 concrete types** — String, Int, Int32, Int16, Float, Bool, Byte, Time
 - **`Field[T]`** — three-state (absent/null/value) for PATCH API
+- **`OrNull[T]` constructors** — zero value → null mapping (eliminates boilerplate)
 - **Functional API** — Map, FlatMap, Equal
 - **`zero/` subpackage** — alternative semantics (zero value = null)
 - **`internal/`** — shared unmarshal helpers (DRY)

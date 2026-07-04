@@ -26,6 +26,11 @@ func TimeFromPtr(t *time.Time) Time {
 	return Time{FromPtr(t)}
 }
 
+// TimeOrNull creates a valid Time if t is non-zero, null otherwise.
+func TimeOrNull(t time.Time) Time {
+	return NewTime(t, !t.IsZero())
+}
+
 // Equal reports whether two Times represent the same instant (timezone-independent).
 func (t Time) Equal(other Time) bool {
 	return t.Valid == other.Valid && (!t.Valid || t.V.Equal(other.V))

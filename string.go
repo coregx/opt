@@ -25,6 +25,12 @@ func StringFromPtr(s *string) String {
 	return String{FromPtr(s)}
 }
 
+// StringOrNull creates a valid String if s is non-empty, null otherwise.
+// Use StringFrom(s) when empty string is a meaningful value.
+func StringOrNull(s string) String {
+	return NewString(s, s != "")
+}
+
 // Equal reports whether two Strings are equal (both null, or same value).
 func (s String) Equal(other String) bool {
 	return Equal(s.Value, other.Value)

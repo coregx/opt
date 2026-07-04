@@ -30,6 +30,11 @@ func FloatFromPtr(f *float64) Float {
 	return Float{FromPtr(f)}
 }
 
+// FloatOrNull creates a valid Float if f is non-zero, null otherwise.
+func FloatOrNull(f float64) Float {
+	return NewFloat(f, f != 0)
+}
+
 // Equal reports whether two Floats are equal.
 func (f Float) Equal(other Float) bool {
 	return Equal(f.Value, other.Value)

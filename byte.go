@@ -25,6 +25,11 @@ func ByteFromPtr(b *byte) Byte {
 	return Byte{FromPtr(b)}
 }
 
+// ByteOrNull creates a valid Byte if b is non-zero, null otherwise.
+func ByteOrNull(b byte) Byte {
+	return NewByte(b, b != 0)
+}
+
 // Equal reports whether two Bytes are equal.
 func (b Byte) Equal(other Byte) bool {
 	return Equal(b.Value, other.Value)

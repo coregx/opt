@@ -2,7 +2,8 @@
 // with full SQL, JSON, and Text serialization support.
 //
 // opt distinguishes between null and zero values: opt.IntFrom(0) is valid, not null.
-// For zero-is-null semantics, use the opt/zero subpackage.
+// Use OrNull constructors when zero values mean "not set": opt.StringOrNull("") is null.
+// For full zero-is-null semantics (including JSON marshaling), use the opt/zero subpackage.
 //
 // # Core Types
 //

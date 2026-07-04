@@ -1,0 +1,12 @@
+# opt — Coregx
+
+> Optional types for Go. Generic-first SQL+JSON nullable types with three-state PATCH support.
+
+## Docs
+
+- [API Reference](https://pkg.go.dev/github.com/coregx/opt)
+- [AGENTS.md](https://github.com/coregx/opt/blob/main/AGENTS.md): AI agent instructions
+
+## Organization
+
+- [Coregx](https://github.com/coregx)

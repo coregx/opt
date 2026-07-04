@@ -11,17 +11,20 @@
 ```go
 import "github.com/coregx/opt"
 
-name := opt.StringFrom("Alice")
-age := opt.NewInt(0, false) // null
+name := opt.StringFrom("Alice")       // always valid
+city := opt.StringOrNull(userCity)     // "" → null, "Moscow" → valid
+age := opt.NewInt(0, false)            // explicit null
 
 fmt.Println(name.Or("unknown")) // "Alice"
+fmt.Println(city.OrZero())      // "" if null
 fmt.Println(age.OrZero())       // 0
 
 data, _ := json.Marshal(struct {
     Name opt.String `json:"name"`
+    City opt.String `json:"city"`
     Age  opt.Int    `json:"age"`
-}{name, age})
-// {"name":"Alice","age":null}
+}{name, city, age})
+// {"name":"Alice","city":null,"age":null}
 ```
 
 ## Build & Test

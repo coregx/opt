@@ -88,11 +88,18 @@ func main() {
 opt.From(value)          // Always valid: opt.From("hello"), opt.From(42)
 opt.New(value, valid)    // Explicit: opt.New("", false) → null
 opt.FromPtr(ptr)         // From pointer: nil → null, &v → valid
+opt.OrNull(value)        // Zero value → null: opt.OrNull("") → null, opt.OrNull(42) → valid
 
 // Type-specific shortcuts
-opt.StringFrom("hello")  opt.IntFrom(42)  opt.FloatFrom(3.14)
-opt.BoolFrom(true)       opt.TimeFrom(t)  opt.ByteFrom(0x42)
+opt.StringFrom("hello")      opt.StringOrNull("")     // "" → null
+opt.IntFrom(42)              opt.IntOrNull(0)         // 0 → null
+opt.FloatFrom(3.14)          opt.FloatOrNull(0.0)     // 0 → null
+opt.BoolFrom(true)           opt.BoolOrNull(false)    // false → null
+opt.TimeFrom(t)              opt.TimeOrNull(t)        // zero time → null
+opt.ByteFrom(0x42)           opt.ByteOrNull(0)        // 0 → null
 ```
+
+`From` = value is always valid. `OrNull` = zero value means "not set" → null. Choose based on your semantics.
 
 ### Value Access
 

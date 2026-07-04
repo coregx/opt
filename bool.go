@@ -25,6 +25,12 @@ func BoolFromPtr(b *bool) Bool {
 	return Bool{FromPtr(b)}
 }
 
+// BoolOrNull creates a valid Bool if b is true, null if false.
+// Use BoolFrom(false) when false is an explicit value, not absence.
+func BoolOrNull(b bool) Bool {
+	return NewBool(b, b)
+}
+
 // Equal reports whether two Bools are equal.
 func (b Bool) Equal(other Bool) bool {
 	return Equal(b.Value, other.Value)

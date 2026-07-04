@@ -73,6 +73,34 @@ func ExampleMap() {
 	// true
 }
 
+func ExampleStringOrNull() {
+	valid := opt.StringOrNull("Moscow")
+	fmt.Println(valid.Or("unknown"))
+
+	null := opt.StringOrNull("")
+	fmt.Println(null.Or("unknown"))
+	fmt.Println(null.IsZero())
+	// Output:
+	// Moscow
+	// unknown
+	// true
+}
+
+func ExampleOrNull() {
+	i := opt.OrNull(42)
+	fmt.Println(i.OrZero()) // 42
+
+	z := opt.OrNull(0)
+	fmt.Println(z.IsZero()) // true — 0 means "not set"
+
+	s := opt.OrNull("hello")
+	fmt.Println(s.Or("default")) // hello
+	// Output:
+	// 42
+	// true
+	// hello
+}
+
 func ExampleValue_structJSON() {
 	type User struct {
 		Name  opt.String `json:"name"`

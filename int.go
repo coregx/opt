@@ -27,6 +27,11 @@ func IntFromPtr(i *int64) Int {
 	return Int{FromPtr(i)}
 }
 
+// IntOrNull creates a valid Int if n is non-zero, null otherwise.
+func IntOrNull(n int64) Int {
+	return NewInt(n, n != 0)
+}
+
 // Equal reports whether two Ints are equal.
 func (i Int) Equal(other Int) bool {
 	return Equal(i.Value, other.Value)

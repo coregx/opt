@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-04
+
+### Added
+
+- **`OrNull[T]` generic constructor** — zero value → null mapping for any comparable type
+- **Typed OrNull constructors** — `StringOrNull`, `IntOrNull`, `Int32OrNull`, `Int16OrNull`, `FloatOrNull`, `BoolOrNull`, `ByteOrNull`, `TimeOrNull`
+- Eliminates boilerplate helpers in DB/API projects: `opt.StringOrNull(s)` instead of custom `optStr(s)` functions
+
+### Documentation
+
+- Updated README with OrNull API section
+- Updated AGENTS.md with OrNull examples
+- Added OrNull example tests for godoc
+
 ## [0.1.0] - 2026-07-04
 
 ### Added
@@ -22,5 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `encoding/json/v2` compatible (no changes needed)
 - CI/CD: GitHub Actions (3 OS × 3 Go versions), Codecov OIDC, branch protection
 
-[Unreleased]: https://github.com/coregx/opt/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/coregx/opt/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/coregx/opt/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/coregx/opt/releases/tag/v0.1.0

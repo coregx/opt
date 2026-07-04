@@ -26,6 +26,11 @@ func Int16FromPtr(i *int16) Int16 {
 	return Int16{FromPtr(i)}
 }
 
+// Int16OrNull creates a valid Int16 if n is non-zero, null otherwise.
+func Int16OrNull(n int16) Int16 {
+	return NewInt16(n, n != 0)
+}
+
 // Equal reports whether two Int16s are equal.
 func (i Int16) Equal(other Int16) bool {
 	return Equal(i.Value, other.Value)

@@ -26,6 +26,11 @@ func Int32FromPtr(i *int32) Int32 {
 	return Int32{FromPtr(i)}
 }
 
+// Int32OrNull creates a valid Int32 if n is non-zero, null otherwise.
+func Int32OrNull(n int32) Int32 {
+	return NewInt32(n, n != 0)
+}
+
 // Equal reports whether two Int32s are equal.
 func (i Int32) Equal(other Int32) bool {
 	return Equal(i.Value, other.Value)

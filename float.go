@@ -12,7 +12,7 @@ import (
 // Float is a nullable float64 with optimized JSON marshaling.
 // It rejects Inf and NaN during JSON serialization.
 type Float struct {
-	Value[float64]
+	Option[float64]
 }
 
 // NewFloat creates a Float with the given value and validity.
@@ -37,7 +37,7 @@ func FloatOrNull(f float64) Float {
 
 // Equal reports whether two Floats are equal.
 func (f Float) Equal(other Float) bool {
-	return Equal(f.Value, other.Value)
+	return Equal(f.Option, other.Option)
 }
 
 // MarshalJSON implements json.Marshaler. Rejects Inf and NaN.

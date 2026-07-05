@@ -282,9 +282,9 @@ func TestFloatStringJSON(t *testing.T) {
 	}
 }
 
-// --- Value generic ---
+// --- Option generic ---
 
-func TestValueOr(t *testing.T) {
+func TestOptionOr(t *testing.T) {
 	v := From(42)
 	if v.Or(99) != 42 {
 		t.Error("valid Or should return value")
@@ -295,7 +295,7 @@ func TestValueOr(t *testing.T) {
 	}
 }
 
-func TestValueSetValid(t *testing.T) {
+func TestOptionSetValid(t *testing.T) {
 	v := New(0, false)
 	v.SetValid(42)
 	if v.V != 42 || !v.Valid {
@@ -303,7 +303,7 @@ func TestValueSetValid(t *testing.T) {
 	}
 }
 
-func TestValuePtr(t *testing.T) {
+func TestOptionPtr(t *testing.T) {
 	v := From(42)
 	ptr := v.Ptr()
 	if ptr == nil || *ptr != 42 {

@@ -7,7 +7,7 @@
 //
 // # Core Types
 //
-// Value[T] is the generic foundation. Concrete types (String, Int, Float, Bool, Time,
+// Option[T] is the generic foundation. Concrete types (String, Int, Float, Bool, Time,
 // Int32, Int16, Byte) provide optimized marshaling for common SQL/JSON types.
 //
 // Field[T] adds three-state semantics (absent/null/value) for PATCH API support.

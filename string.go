@@ -7,7 +7,7 @@ import (
 
 // String is a nullable string with optimized JSON and Text marshaling.
 type String struct {
-	Value[string]
+	Option[string]
 }
 
 // NewString creates a String with the given value and validity.
@@ -33,7 +33,7 @@ func StringOrNull(s string) String {
 
 // Equal reports whether two Strings are equal (both null, or same value).
 func (s String) Equal(other String) bool {
-	return Equal(s.Value, other.Value)
+	return Equal(s.Option, other.Option)
 }
 
 // MarshalJSON implements json.Marshaler.

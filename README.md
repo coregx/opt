@@ -30,11 +30,12 @@ type User struct {
 
 ## Features
 
-- **Generic foundation** — `Value[T]` works with any type via `sql.Null[T]`
+- **Generic foundation** — `Option[T]` works with any type via `sql.Null[T]`
 - **9 concrete types** — String, Int, Int32, Int16, Float, Bool, Byte, Time
 - **Three-state `Field[T]`** — distinguish absent / null / value for PATCH APIs
 - **Functional API** — `Map`, `FlatMap`, `Equal` for composable transformations
 - **Zero dependencies** — only Go stdlib (`database/sql`, `encoding/json`)
+- **`FieldFromOption`** — lossless Option→Field conversion for PATCH workflows
 - **SQL-ready** — `Scanner`/`Valuer` via `sql.Null[T]`, works with pgx, database/sql
 - **JSON-ready** — proper null marshaling, `omitzero` support (Go 1.24+)
 - **json/v2 compatible** — works with `encoding/json/v2` without changes
@@ -114,8 +115,8 @@ v.IsZero()               // true when null (for omitzero)
 ### Functional
 
 ```go
-opt.Map(v, func(T) U) Value[U]              // Transform if valid
-opt.FlatMap(v, func(T) Value[U]) Value[U]    // Chain optional operations
+opt.Map(v, func(T) U) Option[U]              // Transform if valid
+opt.FlatMap(v, func(T) Option[U]) Option[U]  // Chain optional operations
 opt.Equal(a, b)                               // Nil-safe comparison
 ```
 
@@ -165,7 +166,7 @@ db.QueryRow("SELECT name, age FROM users WHERE id=$1", id).Scan(&user.Name, &use
 
 | Feature | opt | guregu/null | `*T` (pointer) | `sql.Null[T]` |
 |---------|-----|-----------|----------------|---------------|
-| Generic `Value[T]` | **Full** | Partial (MarshalText commented out) | N/A | No JSON |
+| Generic `Option[T]` | **Full** | Partial (MarshalText commented out) | N/A | No JSON |
 | Three-state (PATCH) | **`Field[T]`** | No | No | No |
 | Map / FlatMap | **Yes** | No | No | No |
 | OrElse (lazy) | **Yes** | No | No | No |

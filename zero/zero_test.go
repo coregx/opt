@@ -198,9 +198,9 @@ func TestTimeMarshalJSON(t *testing.T) {
 	}
 }
 
-// --- Generic Value ---
+// --- Generic Option ---
 
-func TestValueFrom(t *testing.T) {
+func TestOptionFrom(t *testing.T) {
 	v := From(42)
 	if v.V != 42 || !v.Valid {
 		t.Error("From(42) should be valid")
@@ -212,7 +212,7 @@ func TestValueFrom(t *testing.T) {
 	}
 }
 
-func TestValueMarshalJSON(t *testing.T) {
+func TestOptionMarshalJSON(t *testing.T) {
 	v := From(42)
 	data, _ := json.Marshal(v)
 	if string(data) != "42" {

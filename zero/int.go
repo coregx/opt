@@ -8,7 +8,7 @@ import (
 
 // Int is a nullable int64 where 0 is treated as null.
 type Int struct {
-	Value[int64]
+	Option[int64]
 }
 
 // NewInt creates an Int with the given value and validity.
@@ -28,7 +28,7 @@ func IntFromPtr(i *int64) Int {
 
 // Equal reports whether two Ints are equal.
 func (i Int) Equal(other Int) bool {
-	return i.Value.Equal(other.Value)
+	return i.Option.Equal(other.Option)
 }
 
 // MarshalJSON implements json.Marshaler. Marshals to 0 when null.

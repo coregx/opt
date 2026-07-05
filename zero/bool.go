@@ -7,7 +7,7 @@ import (
 
 // Bool is a nullable bool where false is treated as null.
 type Bool struct {
-	Value[bool]
+	Option[bool]
 }
 
 // NewBool creates a Bool with the given value and validity.
@@ -27,7 +27,7 @@ func BoolFromPtr(b *bool) Bool {
 
 // Equal reports whether two Bools are equal.
 func (b Bool) Equal(other Bool) bool {
-	return b.Value.Equal(other.Value)
+	return b.Option.Equal(other.Option)
 }
 
 // MarshalJSON implements json.Marshaler. Marshals to false when null.

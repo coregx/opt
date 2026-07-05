@@ -160,23 +160,23 @@ func TestFieldPtr(t *testing.T) {
 	}
 }
 
-func TestFieldToValue(t *testing.T) {
+func TestFieldToOption(t *testing.T) {
 	v := FieldFrom("hello")
-	val := v.ToValue()
+	val := v.ToOption()
 	if val.V != "hello" || !val.Valid {
-		t.Error("ToValue from value should be valid")
+		t.Error("ToOption from value should be valid")
 	}
 
 	null := FieldNull[string]()
-	nullVal := null.ToValue()
+	nullVal := null.ToOption()
 	if nullVal.Valid {
-		t.Error("ToValue from null should be invalid")
+		t.Error("ToOption from null should be invalid")
 	}
 
 	absent := Field[string]{}
-	absentVal := absent.ToValue()
+	absentVal := absent.ToOption()
 	if absentVal.Valid {
-		t.Error("ToValue from absent should be invalid")
+		t.Error("ToOption from absent should be invalid")
 	}
 }
 

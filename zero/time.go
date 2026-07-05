@@ -8,7 +8,7 @@ import (
 
 // Time is a nullable time.Time where the zero time is treated as null.
 type Time struct {
-	Value[time.Time]
+	Option[time.Time]
 }
 
 // NewTime creates a Time with the given value and validity.

@@ -73,8 +73,8 @@ func (f Field[T]) Ptr() *T {
 	return &f.V
 }
 
-// ToValue converts Field to Value, collapsing absent and null into invalid.
-func (f Field[T]) ToValue() Value[T] {
+// ToOption converts Field to Option, collapsing absent and null into invalid.
+func (f Field[T]) ToOption() Option[T] {
 	return New(f.V, f.Valid)
 }
 

@@ -8,7 +8,7 @@ import (
 
 // Int32 is a nullable int32 with optimized JSON marshaling.
 type Int32 struct {
-	Value[int32]
+	Option[int32]
 }
 
 // NewInt32 creates an Int32 with the given value and validity.
@@ -33,7 +33,7 @@ func Int32OrNull(n int32) Int32 {
 
 // Equal reports whether two Int32s are equal.
 func (i Int32) Equal(other Int32) bool {
-	return Equal(i.Value, other.Value)
+	return Equal(i.Option, other.Option)
 }
 
 // MarshalJSON implements json.Marshaler.

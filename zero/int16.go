@@ -8,7 +8,7 @@ import (
 
 // Int16 is a nullable int16 where 0 is treated as null.
 type Int16 struct {
-	Value[int16]
+	Option[int16]
 }
 
 // NewInt16 creates an Int16 with the given value and validity.
@@ -28,7 +28,7 @@ func Int16FromPtr(i *int16) Int16 {
 
 // Equal reports whether two Int16s are equal.
 func (i Int16) Equal(other Int16) bool {
-	return i.Value.Equal(other.Value)
+	return i.Option.Equal(other.Option)
 }
 
 // MarshalJSON implements json.Marshaler. Marshals to 0 when null.

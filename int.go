@@ -9,7 +9,7 @@ import (
 // Int is a nullable int64 with optimized JSON marshaling.
 // It accepts both numbers and string-encoded numbers in JSON.
 type Int struct {
-	Value[int64]
+	Option[int64]
 }
 
 // NewInt creates an Int with the given value and validity.
@@ -34,7 +34,7 @@ func IntOrNull(n int64) Int {
 
 // Equal reports whether two Ints are equal.
 func (i Int) Equal(other Int) bool {
-	return Equal(i.Value, other.Value)
+	return Equal(i.Option, other.Option)
 }
 
 // MarshalJSON implements json.Marshaler.

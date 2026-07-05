@@ -7,7 +7,7 @@ import (
 
 // String is a nullable string where empty string is treated as null.
 type String struct {
-	Value[string]
+	Option[string]
 }
 
 // NewString creates a String with the given value and validity.
@@ -27,7 +27,7 @@ func StringFromPtr(s *string) String {
 
 // Equal reports whether two Strings are equal.
 func (s String) Equal(other String) bool {
-	return s.Value.Equal(other.Value)
+	return s.Option.Equal(other.Option)
 }
 
 // MarshalJSON implements json.Marshaler. Marshals to "" when null.

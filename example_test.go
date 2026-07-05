@@ -101,7 +101,7 @@ func ExampleOrNull() {
 	// hello
 }
 
-func ExampleValue_structJSON() {
+func ExampleOption_structJSON() {
 	type User struct {
 		Name  opt.String `json:"name"`
 		Age   opt.Int    `json:"age"`

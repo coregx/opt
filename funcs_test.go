@@ -21,7 +21,7 @@ func TestMap(t *testing.T) {
 }
 
 func TestFlatMap(t *testing.T) {
-	parseInt := func(s string) Value[int] {
+	parseInt := func(s string) Option[int] {
 		n, err := strconv.Atoi(s)
 		if err != nil {
 			return New(0, false)
@@ -51,7 +51,7 @@ func TestFlatMap(t *testing.T) {
 func TestEqual(t *testing.T) {
 	tests := []struct {
 		name string
-		a, b Value[int]
+		a, b Option[int]
 		want bool
 	}{
 		{"both valid equal", From(42), From(42), true},
@@ -68,6 +68,42 @@ func TestEqual(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestFieldFromOption(t *testing.T) {
+	t.Run("valid option", func(t *testing.T) {
+		v := From("hello")
+		f := FieldFromOption(v)
+		if !f.Present || !f.Valid || f.V != "hello" {
+			t.Errorf("got {%v, %v, %v}, want {hello, present, valid}", f.V, f.Present, f.Valid)
+		}
+	})
+
+	t.Run("null option", func(t *testing.T) {
+		v := New("", false)
+		f := FieldFromOption(v)
+		if !f.Present || f.Valid {
+			t.Errorf("got {present:%v, valid:%v}, want {present:true, valid:false}", f.Present, f.Valid)
+		}
+	})
+
+	t.Run("roundtrip valid", func(t *testing.T) {
+		original := From(42)
+		field := FieldFromOption(original)
+		back := field.ToOption()
+		if !Equal(original, back) {
+			t.Errorf("roundtrip: got %v, want %v", back, original)
+		}
+	})
+
+	t.Run("roundtrip null", func(t *testing.T) {
+		original := New(0, false)
+		field := FieldFromOption(original)
+		back := field.ToOption()
+		if !Equal(original, back) {
+			t.Errorf("roundtrip null: got {%v, %v}, want {0, false}", back.V, back.Valid)
+		}
+	})
 }
 
 func TestMapChain(t *testing.T) {

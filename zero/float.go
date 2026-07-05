@@ -11,7 +11,7 @@ import (
 
 // Float is a nullable float64 where 0 is treated as null.
 type Float struct {
-	Value[float64]
+	Option[float64]
 }
 
 // NewFloat creates a Float with the given value and validity.
@@ -31,7 +31,7 @@ func FloatFromPtr(f *float64) Float {
 
 // Equal reports whether two Floats are equal.
 func (f Float) Equal(other Float) bool {
-	return f.Value.Equal(other.Value)
+	return f.Option.Equal(other.Option)
 }
 
 // MarshalJSON implements json.Marshaler. Marshals to 0 when null.

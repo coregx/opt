@@ -8,7 +8,7 @@ import (
 
 // Time is a nullable time.Time with RFC3339 JSON marshaling.
 type Time struct {
-	Value[time.Time]
+	Option[time.Time]
 }
 
 // NewTime creates a Time with the given value and validity.

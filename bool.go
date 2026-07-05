@@ -7,7 +7,7 @@ import (
 
 // Bool is a nullable bool with optimized JSON and Text marshaling.
 type Bool struct {
-	Value[bool]
+	Option[bool]
 }
 
 // NewBool creates a Bool with the given value and validity.
@@ -33,7 +33,7 @@ func BoolOrNull(b bool) Bool {
 
 // Equal reports whether two Bools are equal.
 func (b Bool) Equal(other Bool) bool {
-	return Equal(b.Value, other.Value)
+	return Equal(b.Option, other.Option)
 }
 
 // MarshalJSON implements json.Marshaler.

@@ -39,9 +39,9 @@ go test -bench=. -benchmem ./...
 
 ```
 opt/
-├── value.go       Value[T] — generic foundation (sql.Null[T] + JSON)
+├── option.go      Option[T] — generic foundation (sql.Null[T] + JSON)
 ├── field.go       Field[T] — three-state (absent/null/value) for PATCH
-├── funcs.go       Map, FlatMap, Equal
+├── funcs.go       Map, FlatMap, Equal, OrNull, FieldFromOption
 ├── string.go      String, Int, Int32, Int16, Float, Bool, Byte, Time
 ├── internal/      Shared unmarshal helpers (DRY across opt + zero)
 └── zero/          Alternative semantics (zero value = null)

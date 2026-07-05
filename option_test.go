@@ -116,10 +116,10 @@ func TestIsZero(t *testing.T) {
 	}
 }
 
-func TestValueMarshalJSON(t *testing.T) {
+func TestOptionMarshalJSON(t *testing.T) {
 	tests := []struct {
 		name string
-		val  Value[int]
+		val  Option[int]
 		want string
 	}{
 		{"valid", From(42), "42"},
@@ -139,11 +139,11 @@ func TestValueMarshalJSON(t *testing.T) {
 	}
 }
 
-func TestValueUnmarshalJSON(t *testing.T) {
+func TestOptionUnmarshalJSON(t *testing.T) {
 	tests := []struct {
 		name  string
 		input string
-		want  Value[int]
+		want  Option[int]
 	}{
 		{"number", "42", From(42)},
 		{"zero", "0", From(0)},
@@ -151,7 +151,7 @@ func TestValueUnmarshalJSON(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			var v Value[int]
+			var v Option[int]
 			if err := json.Unmarshal([]byte(tt.input), &v); err != nil {
 				t.Fatal(err)
 			}
@@ -162,10 +162,10 @@ func TestValueUnmarshalJSON(t *testing.T) {
 	}
 }
 
-func TestValueJSONRoundtrip(t *testing.T) {
+func TestOptionJSONRoundtrip(t *testing.T) {
 	type payload struct {
-		Name  Value[string] `json:"name"`
-		Count Value[int]    `json:"count"`
+		Name  Option[string] `json:"name"`
+		Count Option[int]    `json:"count"`
 	}
 
 	original := payload{

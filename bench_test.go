@@ -58,16 +58,16 @@ func BenchmarkNullUnmarshalJSON(b *testing.B) {
 	}
 }
 
-func BenchmarkValueMarshalJSON(b *testing.B) {
+func BenchmarkOptionMarshalJSON(b *testing.B) {
 	v := From(42)
 	for b.Loop() {
 		v.MarshalJSON()
 	}
 }
 
-func BenchmarkValueUnmarshalJSON(b *testing.B) {
+func BenchmarkOptionUnmarshalJSON(b *testing.B) {
 	data := []byte("42")
-	var v Value[int]
+	var v Option[int]
 	for b.Loop() {
 		v.UnmarshalJSON(data)
 	}

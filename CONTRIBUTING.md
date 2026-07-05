@@ -49,9 +49,9 @@ docs: update PATCH API examples
 
 ```
 opt/
-├── value.go       Value[T] — generic foundation
+├── option.go      Option[T] — generic foundation
 ├── field.go       Field[T] — three-state for PATCH
-├── funcs.go       Map, FlatMap, Equal
+├── funcs.go       Map, FlatMap, Equal, OrNull, FieldFromOption
 ├── string.go      String (+ other concrete types)
 ├── internal/      Shared marshal/unmarshal helpers
 └── zero/          Alternative semantics (zero = null)
@@ -59,7 +59,7 @@ opt/
 
 ## Adding a New Type
 
-1. Create `mytype.go` in `opt/` with the type struct embedding `Value[T]`
+1. Create `mytype.go` in `opt/` with the type struct embedding `Option[T]`
 2. Add constructors: `NewMyType`, `MyTypeFrom`, `MyTypeFromPtr`
 3. Add `Equal`, `MarshalJSON`, `UnmarshalJSON`, `MarshalText`, `UnmarshalText`
 4. Create `mytype_test.go` with marshal/unmarshal/roundtrip/equal tests

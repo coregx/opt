@@ -7,7 +7,7 @@ import (
 
 // Byte is a nullable byte (uint8) where 0 is treated as null.
 type Byte struct {
-	Value[byte]
+	Option[byte]
 }
 
 // NewByte creates a Byte with the given value and validity.
@@ -27,7 +27,7 @@ func ByteFromPtr(b *byte) Byte {
 
 // Equal reports whether two Bytes are equal.
 func (b Byte) Equal(other Byte) bool {
-	return b.Value.Equal(other.Value)
+	return b.Option.Equal(other.Option)
 }
 
 // MarshalJSON implements json.Marshaler. Marshals to 0 when null.

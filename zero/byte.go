@@ -60,7 +60,7 @@ func (b Byte) MarshalText() ([]byte, error) {
 
 // UnmarshalText implements encoding.TextUnmarshaler.
 func (b *Byte) UnmarshalText(text []byte) error {
-	if len(text) == 0 || string(text) == "null" {
+	if len(text) == 0 || string(text) == strNull {
 		b.Valid = false
 		return nil
 	}

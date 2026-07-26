@@ -39,7 +39,7 @@ func (i Int16) Equal(other Int16) bool {
 // MarshalJSON implements json.Marshaler.
 func (i Int16) MarshalJSON() ([]byte, error) {
 	if !i.Valid {
-		return []byte("null"), nil
+		return jsonNull, nil
 	}
 	return []byte(strconv.FormatInt(int64(i.V), 10)), nil
 }

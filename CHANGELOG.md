@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-07-05
+
+### Added
+
+- **golangci-lint v2 configuration** — enterprise-grade static analysis with 30+ linters matching coregx ecosystem standard (fursy, stream, coregex, ahocorasick)
+- **Lint CI job** — `golangci/golangci-lint-action@v8` in GitHub Actions workflow
+
+### Changed
+
+- **JSON null marshal: zero-allocation** — `[]byte("null")` extracted to package-level `var jsonNull` across all types. Eliminates 1 alloc/op on every null MarshalJSON call (15x faster: 13ns → 0.86ns)
+- JSON string literals (`"null"`, `"true"`, `"false"`) extracted to constants for DRY
+
+### Fixed
+
+- `time.ExactEqual` uses struct comparison (`==`) for timezone-aware equality; `time.Equal` uses `time.Time.Equal()` for instant comparison (staticcheck QF1009)
+- `NewBool` parameter style: `func(b, valid bool)` (gocritic paramTypeCombine)
+- Test helper simplified: `strconv.Itoa` passed directly instead of wrapping lambda (gocritic unlambda)
+
 ## [0.3.0] - 2026-07-05
 
 ### Breaking Changes
@@ -65,7 +83,8 @@ Concrete types (opt.String, opt.Int, etc.) and constructors (New, From, FromPtr,
 - `encoding/json/v2` compatible (no changes needed)
 - CI/CD: GitHub Actions (3 OS × 3 Go versions), Codecov OIDC, branch protection
 
-[Unreleased]: https://github.com/coregx/opt/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/coregx/opt/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/coregx/opt/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/coregx/opt/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/coregx/opt/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/coregx/opt/releases/tag/v0.1.0

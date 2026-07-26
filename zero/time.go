@@ -60,7 +60,7 @@ func (t Time) MarshalText() ([]byte, error) {
 // UnmarshalText implements encoding.TextUnmarshaler.
 func (t *Time) UnmarshalText(text []byte) error {
 	str := string(text)
-	if str == "" || str == "null" {
+	if str == "" || str == strNull {
 		t.Valid = false
 		return nil
 	}

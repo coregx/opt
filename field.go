@@ -88,7 +88,7 @@ func (f Field[T]) IsZero() bool {
 // If marshaled explicitly: null when invalid, value when valid.
 func (f Field[T]) MarshalJSON() ([]byte, error) {
 	if !f.Valid {
-		return []byte("null"), nil
+		return jsonNull, nil
 	}
 	return json.Marshal(f.V)
 }

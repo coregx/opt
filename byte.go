@@ -38,7 +38,7 @@ func (b Byte) Equal(other Byte) bool {
 // MarshalJSON implements json.Marshaler.
 func (b Byte) MarshalJSON() ([]byte, error) {
 	if !b.Valid {
-		return []byte("null"), nil
+		return jsonNull, nil
 	}
 	return json.Marshal(b.V)
 }
@@ -71,7 +71,7 @@ func (b Byte) MarshalText() ([]byte, error) {
 
 // UnmarshalText implements encoding.TextUnmarshaler.
 func (b *Byte) UnmarshalText(text []byte) error {
-	if len(text) == 0 || string(text) == "null" {
+	if len(text) == 0 || string(text) == strNull {
 		b.Valid = false
 		return nil
 	}

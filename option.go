@@ -7,6 +7,14 @@ import (
 	"encoding/json"
 )
 
+var jsonNull = []byte(strNull)
+
+const (
+	strNull  = "null"
+	strTrue  = "true"
+	strFalse = "false"
+)
+
 // Option is a generic nullable type backed by sql.Null[T].
 // It marshals to JSON null when invalid and to the value when valid.
 // For SQL, it inherits Scanner and Valuer from sql.Null[T].
@@ -80,7 +88,7 @@ func (v Option[T]) IsZero() bool {
 // MarshalJSON implements json.Marshaler. Encodes null when invalid.
 func (v Option[T]) MarshalJSON() ([]byte, error) {
 	if !v.Valid {
-		return []byte("null"), nil
+		return jsonNull, nil
 	}
 	return json.Marshal(v.V)
 }

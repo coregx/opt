@@ -11,7 +11,7 @@ type Bool struct {
 }
 
 // NewBool creates a Bool with the given value and validity.
-func NewBool(b bool, valid bool) Bool {
+func NewBool(b, valid bool) Bool {
 	return Bool{New(b, valid)}
 }
 
@@ -39,7 +39,7 @@ func (b Bool) Equal(other Bool) bool {
 // MarshalJSON implements json.Marshaler.
 func (b Bool) MarshalJSON() ([]byte, error) {
 	if !b.Valid {
-		return []byte("null"), nil
+		return jsonNull, nil
 	}
 	if b.V {
 		return []byte("true"), nil
@@ -84,14 +84,14 @@ func (b Bool) MarshalText() ([]byte, error) {
 func (b *Bool) UnmarshalText(text []byte) error {
 	str := string(text)
 	switch str {
-	case "", "null":
+	case "", strNull:
 		b.Valid = false
 		return nil
-	case "true":
+	case strTrue:
 		b.V = true
 		b.Valid = true
 		return nil
-	case "false":
+	case strFalse:
 		b.V = false
 		b.Valid = true
 		return nil

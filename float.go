@@ -43,7 +43,7 @@ func (f Float) Equal(other Float) bool {
 // MarshalJSON implements json.Marshaler. Rejects Inf and NaN.
 func (f Float) MarshalJSON() ([]byte, error) {
 	if !f.Valid {
-		return []byte("null"), nil
+		return jsonNull, nil
 	}
 	if math.IsInf(f.V, 0) || math.IsNaN(f.V) {
 		return nil, &json.UnsupportedValueError{

@@ -4,7 +4,7 @@
 
 ---
 
-## Current State: v0.3.0
+## Current State: v0.3.1
 
 ### Core
 - **`Option[T]`** — generic foundation on `sql.Null[T]` with JSON/SQL/Text support

@@ -11,6 +11,12 @@ import (
 	"encoding/json"
 )
 
+const (
+	strNull  = "null"
+	strTrue  = "true"
+	strFalse = "false"
+)
+
 // Option is a generic nullable type where the zero value of T is considered null.
 type Option[T comparable] struct {
 	sql.Null[T]

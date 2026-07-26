@@ -100,6 +100,27 @@ jobs:
     - name: Run benchmarks
       run: go test -bench=. -benchmem ./...
 
+  # Static analysis
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.26'
+        cache: true
+
+    - name: Run golangci-lint
+      uses: golangci/golangci-lint-action@v8
+      with:
+        version: latest
+        args: --timeout=5m
+
   # Code formatting check
   formatting:
     name: Formatting

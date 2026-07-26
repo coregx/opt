@@ -39,7 +39,7 @@ func (s String) Equal(other String) bool {
 // MarshalJSON implements json.Marshaler.
 func (s String) MarshalJSON() ([]byte, error) {
 	if !s.Valid {
-		return []byte("null"), nil
+		return jsonNull, nil
 	}
 	return json.Marshal(s.V)
 }

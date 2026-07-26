@@ -8,13 +8,13 @@ import (
 
 func TestMap(t *testing.T) {
 	v := From(42)
-	result := Map(v, func(i int) string { return strconv.Itoa(i) })
+	result := Map(v, strconv.Itoa)
 	if result.V != "42" || !result.Valid {
 		t.Errorf("Map valid: got {%v, %v}, want {\"42\", true}", result.V, result.Valid)
 	}
 
 	null := New(0, false)
-	nullResult := Map(null, func(i int) string { return strconv.Itoa(i) })
+	nullResult := Map(null, strconv.Itoa)
 	if nullResult.Valid {
 		t.Error("Map null: should be invalid")
 	}

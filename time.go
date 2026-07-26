@@ -38,13 +38,13 @@ func (t Time) Equal(other Time) bool {
 
 // ExactEqual reports whether two Times are exactly equal (including timezone).
 func (t Time) ExactEqual(other Time) bool {
-	return t.Valid == other.Valid && (!t.Valid || t.V == other.V)
+	return t.Valid == other.Valid && (!t.Valid || t.V == other.V) //nolint:staticcheck // intentional struct comparison to distinguish timezone
 }
 
 // MarshalJSON implements json.Marshaler.
 func (t Time) MarshalJSON() ([]byte, error) {
 	if !t.Valid {
-		return []byte("null"), nil
+		return jsonNull, nil
 	}
 	return t.V.MarshalJSON()
 }
@@ -73,7 +73,7 @@ func (t Time) MarshalText() ([]byte, error) {
 // UnmarshalText implements encoding.TextUnmarshaler.
 func (t *Time) UnmarshalText(text []byte) error {
 	str := string(text)
-	if str == "" || str == "null" {
+	if str == "" || str == strNull {
 		t.Valid = false
 		return nil
 	}

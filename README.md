@@ -193,6 +193,18 @@ BenchmarkStructUnmarshalJSON 1116 ns/op    2 allocs
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
+
+
+## Star History
+
+<a href="https://starhistory.io">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.starhistory.io/png?repos=coregx/opt&style=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.starhistory.io/png?repos=coregx/opt&style=professional" />
+   <img alt="Star History Chart" src="https://api.starhistory.io/png?repos=coregx/opt" width="800" />
+ </picture>
+</a>
+
 ## License
 
 MIT License — see [LICENSE](LICENSE) for details.
